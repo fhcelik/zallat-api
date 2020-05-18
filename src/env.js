@@ -9,6 +9,6 @@ module.exports = envalid.cleanEnv(
   {
     APP_PORT: port({ default: 5000 }),
     APP_HOST: host({ default: 'localhost' }),
-    APP_WEB_HOST_URL: url({ devDefault: 'http://localhost:3005' }),
+    APP_WEB_HOST_URL: url({ devDefault: 'http://localhost:3000' }),
   }
 );

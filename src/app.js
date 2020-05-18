@@ -16,7 +16,6 @@ app
       credentials: true,
     })
   )
-
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: false }))
   .use(compression())
