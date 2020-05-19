@@ -50,7 +50,7 @@ describe('middleware/authentication', () => {
         .put('/')
         .send(user)
         .set('x-user', '')
-        .expect(400)
+        .expect(401)
     });
   });
 });

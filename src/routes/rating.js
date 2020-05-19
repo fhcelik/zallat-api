@@ -3,7 +3,6 @@
 const router = require('express').Router();
 const Datastore = require('nedb');
 const {validateSchema, ratingSchema} = require('./middleware/validateSchema');
-const { addRating, getRating } = require('../facade/rating')
 
 const db = new Datastore({
     fileName: './rating.db',
