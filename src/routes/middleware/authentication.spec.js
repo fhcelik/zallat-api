@@ -42,9 +42,8 @@ describe('middleware/authentication', () => {
         .expect(204)
     });
 
-    it('should return 500 when there is invalid email in header', () => {
+    it('should return 401 when there is invalid email in header', () => {
       const user = 'johnsmith@gmail.com';
-      db.resolves();
 
       return request(app)
         .put('/')

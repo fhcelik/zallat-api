@@ -1,9 +1,9 @@
 'use strict';
 
-const router = require('express').Router();
 const axios = require('axios');
-const R = require('ramda');
 const cache = require('memory-cache');
+const R = require('ramda');
+const router = require('express').Router();
 const { propsOfBeers } = require('../facade/beers')
 
   router.get('/', (req, res, next) => {
