@@ -4,6 +4,7 @@ const Datastore = require('nedb');
 const R = require('ramda');
 const router = require('express').Router();
 const {loginSchema, validateAuthSchema} = require('./validateAuth');
+const { addUser } = require('../../facade/authentication');
 
 const db = new Datastore({
     fileName: './user.db',
@@ -14,7 +15,7 @@ router.put('/', validateAuthSchema(loginSchema), async (req, res, next) => {
     try {
         const user = R.path(['headers', 'x-user'], req);
 
-        await db.insert({user: user, date: new Date()})
+        await addUser(user);
         res.sendStatus(204);
     }
     catch(error){
@@ -22,4 +23,4 @@ router.put('/', validateAuthSchema(loginSchema), async (req, res, next) => {
     }
 });
 
-module.exports = router
+module.exports = router;

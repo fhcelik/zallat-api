@@ -5,23 +5,26 @@ const proxyquire = require('proxyquire');
 const bodyParser = require('body-parser');
 const request = require('supertest');
 const sinon = require('sinon');
+const chai = require('chai');
 const ErrorHandler = require('./errorHandler');
+
+chai.should();
 
 describe('middleware/authentication', () => {
   let app;
   let authentication;
-  let db;
+  let addUser;
 
   beforeEach(() => {
     app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
-    db = sinon.stub();
+    addUser = sinon.stub();
 
     authentication = proxyquire('./authentication',{
-      './authentication':{
-        db
+      '../../facade/authentication':{
+        addUser
       }
     });
 
@@ -33,13 +36,14 @@ describe('middleware/authentication', () => {
   describe('PUT /', () => {
     it('should return 204 on setting user successfully', () => {
       const user = 'johnsmith@gmail.com';
-      db.resolves();
+      addUser.resolves();
 
       return request(app)
         .put('/')
         .send(user)
         .set('x-user', 'johnsmith@gmail.com')
         .expect(204)
+        .then(() => addUser.calledOnce.should.be.true)
     });
 
     it('should return 401 when there is invalid email in header', () => {
@@ -50,6 +54,17 @@ describe('middleware/authentication', () => {
         .send(user)
         .set('x-user', '')
         .expect(401)
+        .then(() => addUser.calledOnce.should.be.false)
+    });
+
+    it('should return 500 when no response', () => {
+      addUser.rejects();
+
+      return request(app)
+        .put('/')
+        .set('x-user', 'johnsmith@gmail.com')
+        .expect(500)
+        .then(() => addUser.calledOnce.should.be.true)
     });
   });
 });
