@@ -14,7 +14,7 @@ const db = new Datastore({
 /**
  * @swagger
  *
- * /Beers:
+ * /User:
  *   put:
  *     description: Save user log 
  *     summary: Save email

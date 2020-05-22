@@ -10,10 +10,10 @@ const Joi = require('joi');
  *     User:
  *       type: object
  *       properties:
- *         id:
+ *         email:
  *           type: string
  *       required:
- *         - id
+ *         - email
  */
 exports.loginSchema = Joi.object().keys({
   email: Joi.string()

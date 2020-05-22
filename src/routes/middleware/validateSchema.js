@@ -14,6 +14,7 @@ const Joi = require('joi');
  *           type: number
  *         rating:
  *           type: number
+ *           enum: [1,2,3,4,5]
  *         comment:
  *           type: string
  *       required:
