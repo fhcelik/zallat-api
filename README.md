@@ -8,3 +8,5 @@ yarn test -> running test environment
 
 Database -> NeDB embeded database
 There are two collections in database which are rating and user.
+
+Documentation -> http://localhost:5000/docs
