@@ -12,11 +12,10 @@ There are two collections in database which are rating and user.
 # Documentation -> http://localhost:5000/docs
 
 # Folder Tree
-src
- |--index.js
- |--facade
- |--Routes
-     |--docs
-     |--middleware
-# xsds
-   
+# src
+ # |--index.js
+ # |--facade
+ # |--Routes
+     #|--docs
+     #|--middleware
+
