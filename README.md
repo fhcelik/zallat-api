@@ -12,10 +12,29 @@ There are two collections in database which are rating and user.
 # Documentation -> http://localhost:5000/docs
 
 # Folder Tree
-# src
- # |--index.js
- # |--facade
- # |--Routes
-     #|--docs
-     #|--middleware
+C:.
+│   app.js
+│   env.js
+│   index.js
+│
+├───facade
+│       authentication.js
+│       beers.js
+│       rating.js
+│
+└───routes
+    │   beers.js
+    │   index.js
+    │   rating.js
+    │
+    ├───docs
+    │       index.js
+    │       redoc.html
+    │
+    └───middleware
+            authentication.js
+            authentication.spec.js
+            errorHandler.js
+            validateAuth.js
+            validateSchema.js
 
