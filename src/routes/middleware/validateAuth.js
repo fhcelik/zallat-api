@@ -3,6 +3,18 @@
 const validate = require('bluebird').promisify(require('joi').validate).bind(require('joi'));
 const Joi = require('joi');
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *       required:
+ *         - id
+ */
 exports.loginSchema = Joi.object().keys({
   email: Joi.string()
     .email()

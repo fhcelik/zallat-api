@@ -1,5 +1,24 @@
 'use strict';
 
+/**
+ * @swagger
+ *
+ * components:
+ *   responses:
+ *     Undefined:
+ *       description: An undefined error occured
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Error'
+ *   schemas:
+ *     Error:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           description: An error message describing the problem
+ */
 function errorHandler(err, req, res, next) {
   let message = 'Internal Server Error';
 

@@ -11,6 +11,24 @@ const db = new Datastore({
     autoLoad: true
 });
 
+/**
+ * @swagger
+ *
+ * /Beers:
+ *   put:
+ *     description: Save user log 
+ *     summary: Save email
+ *     tags: ['User']
+ *     responses:
+ *       204:
+ *         description: a map of user 
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         $ref: '#/components/responses/Undefined'
+ */
 router.put('/', validateAuthSchema(loginSchema), async (req, res, next) => {
     try {
         const user = R.path(['headers', 'x-user'], req);
