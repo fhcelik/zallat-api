@@ -7,6 +7,9 @@ const { calculateTax, highestEmission, valueOfEmission } = require('../facade/em
 
   router.get('/', (req, res, next) => {
     const {year: year, state: state} = req.query;
+
+    if(!(year && state)) next(error);
+
     const stateCode = stateCodes[state.toUpperCase()];
 
     axios.get('http://api.eia.gov/series/', 
@@ -26,7 +29,9 @@ const { calculateTax, highestEmission, valueOfEmission } = require('../facade/em
   router.get('/tax', (req, res, next) => {
     const {from: fromYear, to: toYear, state: state} = req.query;
     const stateCode = stateCodes[state.toUpperCase()];
-   
+
+    if(!(fromYear && toYear && state)) next(error);
+
     axios.get('http://api.eia.gov/series/', 
     {
       params: {
@@ -43,6 +48,8 @@ const { calculateTax, highestEmission, valueOfEmission } = require('../facade/em
   router.get('/highest', (req, res, next) => {
     const {from: fromYear, to: toYear } = req.query; 
     
+    if(!(fromYear && toYear)) next(error);
+
     highestEmission(fromYear, toYear)
       .then(highestEmission => { 
           res.json(highestEmission)
