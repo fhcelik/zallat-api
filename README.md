@@ -1,4 +1,4 @@
-# vintri-api
+# zallat-api
 
 The server fetchs data from external api, https://www.eia.gov/opendata/qb.php?category=2251609 and gives rates the data.  
 
